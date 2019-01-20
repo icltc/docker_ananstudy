@@ -2,6 +2,22 @@
 {% block content %}
     <body>
         <h1>Hello, {{ user }}!</h1>
+        <form action="" method="post" novalidate>
+            <p>
+                {{ form.fromdatetime.label }}
+                {{ form.fromdatetime(size=32) }}
+
+                {{ form.todatetime.label }}
+                {{ form.todatetime(size=32) }}
+                {{ form.search() }}
+            </p>
+        </form>
+        {% if fromdatetime %}
+        <h2>From {{ fromdatetime }} - </h2>
+        {% endif %}
+        {% if todatetime %}
+        <h2>To {{ todatetime }} </h2>
+        {% endif %}
         {% for post in posts %}
         <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
         {% endfor %}
